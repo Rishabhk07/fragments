@@ -17,6 +17,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     FragmentTransaction fragmentTransaction;
     Button btnRed;
     Button btnBlue;
+    int intBlue = 1;
+    int intRed =0;
+
+    int fragmentType = intBlue;
 
 
     @Override
@@ -30,30 +34,56 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnRed.setOnClickListener(this);
         btnBlue.setOnClickListener(this);
 
+        if(savedInstanceState != null){
+            fragmentType = savedInstanceState.getInt("fragtype");
+        }
+
         fragmentManager = getSupportFragmentManager();
+        FramentBlue framentBlue = new FramentBlue();
+        if(fragmentType == intBlue){
+            setFrament(intBlue);
+        }else {
+            setFrament(intRed);
+        }
+
 
 
     }
 
     @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putInt("fragtype" , fragmentType);
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
     public void onClick(View view) {
+        FramentBlue framentBlue = new FramentBlue();
+        FragmentRed fragmentRed = new FragmentRed();
         switch (view.getId()){
             case R.id.blueBtn:
-                FramentBlue framentBlue = new FramentBlue();
-                fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragmentFrame , framentBlue);
-                fragmentTransaction.commit();
-
+                setFrament(intBlue);
                 break;
             case R.id.redBtn:
-                FragmentRed fragmentRed = new FragmentRed();
-                fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragmentFrame , fragmentRed);
-                fragmentTransaction.commit();
-
-
+                setFrament(intRed);
                 break;
         }
+    }
+
+
+    public void setFrament(int type){
+        fragmentTransaction = fragmentManager.beginTransaction();
+        if(type == intBlue){
+            fragmentType = intBlue;
+            FramentBlue framentBlue = new FramentBlue();
+            fragmentTransaction.replace(R.id.fragmentFrame , framentBlue);
+        }else{
+            fragmentType = intRed;
+            FragmentRed fragmentRed = new FragmentRed();
+            fragmentTransaction.replace(R.id.fragmentFrame , fragmentRed);
+        }
+        fragmentTransaction.commit();
+
     }
 
 
