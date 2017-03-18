@@ -30,10 +30,11 @@ public class FramentBlue extends Fragment {
             public void onClick(View view) {
                //call mainactiivty method
                 if(getActivity() instanceof MainActivity) {
-                    ((MainActivity) getActivity()).showToast();
+//                    ((MainActivity) getActivity()).showToast();
+                    ((MainActivity)getActivity()).shiftCounter(1);
                 }
 
-//                MainActivity.showToast(getContext());
+
             }
         });
         return rootView;

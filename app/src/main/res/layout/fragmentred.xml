@@ -14,4 +14,10 @@
         android:textSize="50dp"
         android:textStyle="bold"/>
 
+    <Button
+        android:text="sub"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button" />
+
 </FrameLayout>
