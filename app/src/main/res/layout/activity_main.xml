@@ -22,7 +22,7 @@
      android:layout_height="0dp"
      android:layout_weight="1"
      android:name="com.condingblocks.fragments.FragmentRed"
-     />
+     tools:layout="@layout/fragmentred"/>
 
 
 

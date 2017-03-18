@@ -28,7 +28,12 @@ public class FramentBlue extends Fragment {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "Clicked", Toast.LENGTH_SHORT).show();
+               //call mainactiivty method
+                if(getActivity() instanceof MainActivity) {
+                    ((MainActivity) getActivity()).showToast();
+                }
+
+//                MainActivity.showToast(getContext());
             }
         });
         return rootView;
